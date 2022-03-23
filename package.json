@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "npx tsc && node ./bin/www",
+    "setup": "npx tsc && node ./build/setup/createTable.js",
     "test": "jest",
     "cov": "jest --coverage"
   },
   "dependencies": {
+    "aws-sdk": "^2.1098.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
