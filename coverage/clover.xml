@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1648068479102" clover="3.2.0">
+  <project timestamp="1648068479102" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="1" coveredelements="1" complexity="0" loc="0" ncloc="0" packages="1" files="1" classes="1"/>
+    <file name="user.ts" path="C:\Users\jungw\Desktop\Work2022\Revature\2022-trms\trms-server\src\user\user.ts">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+    </file>
+  </project>
+</coverage>

@@ -22,7 +22,7 @@ class UserService {
         ':name': u.name,
       },
     };
-    return this.doc
+    return await this.doc
       .put(params)
       .promise()
       .then((result) => {
@@ -34,10 +34,71 @@ class UserService {
         return false;
       });
   }
-  getUsers() {}
+  async getAllUsers(): Promise<User[]> {
+    const params = { TableName };
+    return await this.doc
+      .scan(params)
+      .promise()
+      .then((data) => {
+        logger.info(data);
+        return data.Items as User[];
+      })
+      .catch((err) => {
+        logger.error(err);
+        return [] as User[];
+      });
+  }
 
-  getUserByName() {}
-  updateUser() {}
+  async getUserByName(name: string): Promise<User | null> {
+    const params = { TableName, Key: { name } };
+    return await this.doc
+      .get(params)
+      .promise()
+      .then((data) => {
+        logger.info(data);
+        return data.Item as User;
+      })
+      .catch((err) => {
+        logger.error(err);
+        return null;
+      });
+  }
+
+  async updateUserByName(u: User) {
+    logger.debug(u);
+    const params = {
+      TableName,
+      Key: { name: u.name },
+      ConditionExpression: '#name=:name',
+      UpdateExpression: 'set #password =:p, #fund =:f, #role =:r, #supName =:s',
+      ExpressionAttributeNames: {
+        '#name': 'name',
+        '#password': 'password',
+        '#role': 'role',
+        '#supName': 'supName',
+        '#fund': 'fund',
+      },
+      ExpressionAttributeValues: {
+        ':name': u.name,
+        ':p': u.password,
+        ':r': u.role,
+        ':s': u.supName,
+        ':f': u.fund,
+      },
+      ReturnValues: 'UPDATED_NEW',
+    };
+    return await this.doc
+      .update(params)
+      .promise()
+      .then((data) => {
+        logger.info(data);
+        return true;
+      })
+      .catch((err) => {
+        logger.error(err);
+        return false;
+      });
+  }
 }
 
 const userService = new UserService();

@@ -1,4 +1,5 @@
 import userService from '../user/user.service';
+import trmsService from '../trms/trms.service';
 import logger from '../log';
 
 export function populateUsers() {
@@ -51,7 +52,109 @@ export function populateUsers() {
 }
 
 export function populateTrms() {
-  console.log('need to create trms data');
+  console.log('creating trms data');
+  trmsService.addTrms({
+    name: 'Michael',
+    supName: 'Richard',
+    createdDate: '2020-08-25',
+    role: 'Emp',
+    eventName: 'Nodejs with TypeScript',
+    eventDescription: 'backend development',
+    eventStartDate: '2021-01-12',
+    eventEndDate: '2021-02-01',
+    eventLocation: 'Los Angeles',
+    eventType: 'Certification Preparation Classes',
+    eventCost: 100,
+    proReimbursement: 80,
+    justification: 'needed for job skill',
+    eventGradingFormat: '',
+    grade: '',
+    comments: '',
+    approval: {
+      sup: { date: '', reason: '', status: '', additionalInfo: '' },
+      head: { date: '', reason: '', status: '', additionalInfo: '' },
+      benco: { date: '', reason: '', status: '', additionalInfo: '' },
+    },
+    attachments: '',
+  });
+
+  trmsService.addTrms({
+    name: 'Michael',
+    createdDate: '2021-01-10',
+    role: 'Emp',
+    eventStartDate: '2021-02-20',
+    eventEndDate: '2021-04-15',
+    eventLocation: 'online',
+    supName: 'Richard',
+    eventDescription: 'Native App for android and IOS',
+    eventName: 'React Native with Redux',
+    eventCost: 500,
+    eventType: 'Certification Preparation Classes',
+    proReimbursement: 375,
+    justification:
+      'requires a good understanding of noSql DB to serve customers with better app experience',
+    attachments: '',
+    eventGradingFormat: '',
+    grade: '',
+    comments: '',
+    approval: {
+      sup: { date: '', reason: '', status: '', additionalInfo: '' },
+      head: { date: '', reason: '', status: '', additionalInfo: '' },
+      benco: { date: '', reason: '', status: '', additionalInfo: '' },
+    },
+  });
+
+  trmsService.addTrms({
+    name: 'Elisa',
+    createdDate: '2021-01-10',
+    role: 'Emp',
+    eventStartDate: '2021-05-12',
+    eventEndDate: '2021-06-13',
+    eventLocation: '',
+    supName: 'David',
+    eventName: 'Postgres',
+    eventDescription: '',
+    eventCost: 500,
+    eventGradingFormat: '',
+    eventType: 'University Courses',
+    justification: '',
+    attachments: '',
+    grade: '',
+    comments: '',
+
+    proReimbursement: 300,
+    approval: {
+      sup: { date: '', reason: '', status: '', additionalInfo: '' },
+      head: { date: '', reason: '', status: '', additionalInfo: '' },
+      benco: { date: '', reason: '', status: '', additionalInfo: '' },
+    },
+  });
+
+  trmsService.addTrms({
+    name: 'Richard',
+    createdDate: '2021-01-10',
+    role: 'Sup',
+    eventStartDate: '2021-05-12',
+    eventEndDate: '2021-05-12',
+    eventLocation: '',
+    supName: 'Jim',
+    eventName: 'Augular',
+    eventDescription: '',
+    eventCost: 500,
+    proReimbursement: 400,
+    eventGradingFormat: '',
+    eventType: 'Certification',
+    justification: '',
+    attachments: '',
+    grade: '',
+    comments: '',
+
+    approval: {
+      sup: { date: '', reason: '', status: '', additionalInfo: '' },
+      head: { date: '', reason: '', status: '', additionalInfo: '' },
+      benco: { date: '', reason: '', status: '', additionalInfo: '' },
+    },
+  });
 }
 
 export function deleteTableMessage(err: any, data: any) {
